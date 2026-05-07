@@ -2,23 +2,24 @@
 include 'koneksi.php';
 
 $nama = $_POST['nama_dosen'];
-$c1   = $_POST['c1'];
-$c2   = $_POST['c2'];
-$c3   = $_POST['c3'];
-$c4   = $_POST['c4'];
-$c5   = $_POST['c5'];
-$c6   = $_POST['c6'];
-$c7   = $_POST['c7'];
-$c8   = $_POST['c8'];
+$nilai_array = $_POST['nilai'];
 
-$query = "INSERT INTO dosen (nama_dosen, c1_val, c2_val, c3_val, c4_val, c5_val, c6_val, c7_val, c8_val) 
-          VALUES ('$nama', '$c1', '$c2', '$c3', '$c4', '$c5', '$c6', '$c7', '$c8')";
 
+$kolom = "nama_dosen";
+$values = "'$nama'";
+
+foreach ($nilai_array as $kode => $val) {
+    $nama_kolom = strtolower($kode) . "_val";
+    $kolom .= ", $nama_kolom";
+    $values .= ", '$val'";
+}
+
+$query = "INSERT INTO dosen ($kolom) VALUES ($values)";
 $simpan = mysqli_query($conn, $query);
 
 if($simpan) {
-    echo "<script>alert('Data Dosen Berhasil Ditambahkan!'); window.location='data_dosen.php';</script>";
+    echo "<script>alert('Data Dosen Berhasil Disimpan!'); window.location='data_dosen.php';</script>";
 } else {
-    echo "Gagal simpan: " . mysqli_error($conn);
+    echo "Gagal simpan! Pastikan kolom di tabel dosen sudah sesuai. Error: " . mysqli_error($conn);
 }
 ?>
