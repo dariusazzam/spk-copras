@@ -2,9 +2,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
--- --------------------------------------------------------
--- 1. Struktur Tabel Kriteria
--- --------------------------------------------------------
+
 CREATE TABLE `kriteria` (
   `id_kriteria` int(11) NOT NULL AUTO_INCREMENT,
   `kode_kriteria` varchar(5) DEFAULT NULL,
@@ -14,7 +12,6 @@ CREATE TABLE `kriteria` (
   PRIMARY KEY (`id_kriteria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Data Awal Kriteria (Total Bobot: 1.00)
 INSERT INTO `kriteria` (`kode_kriteria`, `nama_kriteria`, `bobot`, `jenis`) VALUES
 ('C1', 'Golongan', 0.20, 'benefit'),
 ('C2', 'Surat Peringatan', 0.18, 'cost'),
@@ -25,9 +22,7 @@ INSERT INTO `kriteria` (`kode_kriteria`, `nama_kriteria`, `bobot`, `jenis`) VALU
 ('C7', 'Umur', 0.07, 'benefit'),
 ('C8', 'Pembicara Eksternal', 0.05, 'benefit');
 
--- --------------------------------------------------------
--- 2. Struktur Tabel Dosen
--- --------------------------------------------------------
+
 CREATE TABLE `dosen` (
   `id_dosen` int(11) NOT NULL AUTO_INCREMENT,
   `nama_dosen` varchar(100) DEFAULT NULL,
@@ -42,7 +37,7 @@ CREATE TABLE `dosen` (
   PRIMARY KEY (`id_dosen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Data Awal Dosen (Sample A1 - A8)
+
 INSERT INTO `dosen` (`nama_dosen`, `c1_val`, `c2_val`, `c3_val`, `c4_val`, `c5_val`, `c6_val`, `c7_val`, `c8_val`) VALUES
 ('A1', 4, 3, 3, 2, 5, 3, 30, 3),
 ('A2', 4, 3, 3, 2, 6, 9, 30, 3),
